@@ -356,7 +356,7 @@ Setup InfluxDB read node with query.
 
 ![07-influxquery.jpg](./docs/images/nodered/influxdb/07-influxquery.jpg "Influx query")
 
-Activate ```/enviro/temperature``` and check debug messages.
+Activate ```/enviro/temperature``` then activate inject node prior ```Read Temperature``` and check debug messages.
 
 ![08-influxhorray.jpg](./docs/images/nodered/influxdb/08-influxhorray.jpg "Influx debug")
 
