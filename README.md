@@ -324,9 +324,9 @@ In debug messages you should see something like this.
 Congrats you sent and received message via mqtt.
 
 #### InfluxDB
-Install InfluxDB pallet.
+Install InfluxDB palette.
 
-![01-install.jpg](./docs/images/nodered/influxdb/01-install.jpg "Pallet")
+![01-install.jpg](./docs/images/nodered/influxdb/01-install.jpg "Palette")
 
 Add InfluxDB output node, open and setup server.
 
