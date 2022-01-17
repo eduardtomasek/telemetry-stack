@@ -1,0 +1,63 @@
+version: "3.5"
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000" # expose for localhost
+    volumes:
+      - $HOME/telemetry-stack/grafana/data:/var/lib/grafana # data path
+      - $HOME/telemetry-stack/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - $HOME/telemetry-stack/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+      - GF_SECURITY_ADMIN_USER=${GF_SECURITY_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD}
+  
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports: 
+      - "8086:8086"
+    volumes:
+      - $HOME/telemetry-stack/influxdb/data:/var/lib/influxdb
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${DOCKER_INFLUXDB_INIT_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${DOCKER_INFLUXDB_INIT_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${DOCKER_INFLUXDB_INIT_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${DOCKER_INFLUXDB_INIT_BUCKET}
+  
+  nodered:
+      image: nodered/node-red
+      container_name: nodered
+      ports:
+        - "1880:1880"
+      volumes:
+        - $HOME/telemetry-stack/node-red/data:/data
+  
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - $HOME/telemetry-stack/mosquitto/config:/mosquitto/config
+      - $HOME/telemetry-stack/mosquitto/data:/mosquitto/data
+      - $HOME/telemetry-stack/mosquitto/log:/mosquitto/log
+
+volumes:
+  portainer_data:
