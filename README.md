@@ -323,6 +323,45 @@ In debug messages you should see something like this.
 
 Congrats you sent and received message via mqtt.
 
+#### InfluxDB
+Install InfluxDB pallet.
+
+![01-install.jpg](./docs/images/nodered/influxdb/01-install.jpg "Pallet")
+
+Add InfluxDB output node, open and setup server.
+
+![02-setup.jpg](./docs/images/nodered/influxdb/02-setup.jpg "InfluxDB node")
+
+Use InfluxDB credentials.
+
+![03-credentials.jpg](./docs/images/nodered/influxdb/03-credentials.jpg "Credentials")
+
+Update previous flow.
+
+![04-updated.jpg](./docs/images/nodered/influxdb/04-updated.jpg "Update flow")
+
+Setup measurement for output InfluxDB node.
+
+![04-setpumeasurement.jpg](./docs/images/nodered/influxdb/04-setpumeasurement.jpg "Setup measurement")
+
+Setup custom function. This function prepare data for InfluxDB.
+
+![05-customfunc.jpg](./docs/images/nodered/influxdb/05-customfunc.jpg "Custom function")
+
+Update flow agin for reading from InfluxDB.
+
+![06-influxread.jpg](./docs/images/nodered/influxdb/06-influxread.jpg "Influx read")
+
+Setup InfluxDB read node with query.
+
+![07-influxquery.jpg](./docs/images/nodered/influxdb/07-influxquery.jpg "Influx query")
+
+Check debug messages.
+
+![08-influxhorray.jpg](./docs/images/nodered/influxdb/08-influxhorray.jpg "Influx debug")
+
+Congrats! You just sent temperature into mqtt. Red from mqtt. You wrote it into InfluxDB and red from InfluxDB. :)
+
 ### Grafana
 Grafana sits on port ```3000```
 
@@ -339,7 +378,32 @@ Add and setup InfluxDB data source.
 
 ![adddatasource04](./docs/images/grafana05-setup-source-b.jpg "Add data source 04")
 
+#### Display values
+Go to new dashboard
 
+![01-opendashboard.jpg](./docs/images/grafana/influxdb/01-opendashboard.jpg "New dashboard")
+
+And add new panel.
+
+![02-newpanel.jpg](./docs/images/grafana/influxdb/02-newpanel.jpg "New panel")
+
+Use InfluxDB source and setup query.
+
+![03-setupquery.jpg](./docs/images/grafana/influxdb/03-setupquery.jpg "New query")
+
+Select visual.
+
+![04-selectvisual.jpg](./docs/images/grafana/influxdb/04-selectvisual.jpg "Select visual")
+
+Use suggested line chart.
+
+![05-usesuggestion.jpg](./docs/images/grafana/influxdb/05-usesuggestion.jpg "Suggested")
+
+Apply and you can see you new panel.
+
+![06-applyandwatch.jpg](./docs/images/grafana/influxdb/06-applyandwatch.jpg "Apply")
+
+Congrats! Now you can display values from InfluxDb.
 
 # Influx DB v2
 ## .env
