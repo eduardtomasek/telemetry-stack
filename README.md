@@ -405,6 +405,10 @@ Apply and you can see you new panel.
 
 Congrats! Now you can display values from InfluxDb.
 
+When you have more data it can look like this :)
+
+![07-showcase.jpg](./docs/images/grafana/influxdb/07-showcase.jpg "Showcase")
+
 # Influx DB v2
 ## .env
 ```
