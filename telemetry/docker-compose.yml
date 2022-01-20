@@ -47,6 +47,7 @@ services:
   nodered:
       image: nodered/node-red
       container_name: nodered
+      restart: always
       ports:
         - "1880:1880"
       volumes:
@@ -55,6 +56,7 @@ services:
   mosquitto:
     image: eclipse-mosquitto
     container_name: mosquitto
+    restart: always
     ports:
       - "1883:1883"
       - "9001:9001"
